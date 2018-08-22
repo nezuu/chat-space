@@ -1,0 +1,44 @@
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+
+.chat-main{
+  height: 100vh;
+  width: calc( 100vw - 300px);
+  float: left;
+  position: relative;
+  .chat-main__header{
+    height: 15%;
+    border:1px solid #eee;
+    .chat-main__header--group{
+      @include clearfix();
+      margin: 0 40px;
+      .chat-main__header--group-name{
+        color: #333;
+        font-size: 20px;
+        margin: 35px 0 15px;
+        float: left;
+      }
+      .chat-edit{
+        color: #38AEF0;
+        font-size: 15px;
+        padding: 10px 20px;
+        margin-top: 28px;
+        border: 2px solid #38AEF0;
+        float: right;
+      }
+    }
+    .caht-main__header-members{
+      color: #999;
+      font-size: 12px;
+      margin: 0 40px;
+    }
+  }
+}
+
+
