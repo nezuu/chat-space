@@ -24,6 +24,8 @@ Things you may want to cover:
 * ...
 
 
+
+
 ## usersテーブル
 
 |Column|Type|Options|
@@ -31,31 +33,33 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- has_many :text
-- has_many :user_group
+- has_many :texts
+- has_many :users_groups
+- has_many :groups, through: :users_groups
 
 
 
 
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 
 ### Association
-- has_many :text
-- has_many :user_group
+- has_many :texts
+- has_many :users_groups
+- has_many :users, through: :users_groups
 
 
 
 
-## user_groupテーブル
+## users_groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|group_id|integer|null: false|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -64,14 +68,14 @@ Things you may want to cover:
 
 
 
-## textテーブル
+## textsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|text|text|null:false|
 |user_id|integer|null: false|
 |group_id|integer|null: false|
 |img|text|  |
-|create_at|timestampts||
 
 
 ### Association
