@@ -1,0 +1,38 @@
+.notification
+.chat-side
+  .chat-side__user
+    %ul.chat-side__user-content
+      %li.chat-side__user-name
+        = current_user.name
+      %li.icon
+        =link_to edit_user_path(current_user), class: "icon-rigth" do
+          %i.fa.fa-cog
+      %li.icon2
+        %a.icon-left(href="https://www.google.co.jp/")
+          %i.fa.fa-edit
+  .chat-side__groups
+    .chat-side__groups-list
+      .caht-side__group
+        = render partial: 'chat-side__group'
+
+
+.chat-main
+  .chat-main__header
+    .chat-main__header--group
+      .chat-main__header--group-name
+        グループ名2
+      %a.chat-edit(href="https://www.google.co.jp/")
+        Edit
+    .caht-main__header-members
+      MEMBER:
+      %i
+        将吾
+  .chat-main__body
+    = render partial: 'chat-main__body--messages-list'
+  .chat-main__footer
+    = form_tag '#' do
+      %input{placeholder: "  type a message", type: "text", class: "chat-main__footer-form"}
+        %label.upload-label{for: "upload-icon"}
+          %i.fa.fa-picture-o
+          %input{type: "file", id:"upload-icon" }
+          %input{type: "submit", value:"SENT", class:"sent"}
