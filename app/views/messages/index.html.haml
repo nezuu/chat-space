@@ -1,20 +1,5 @@
 .notification
-.chat-side
-  .chat-side__user
-    %ul.chat-side__user-content
-      %li.chat-side__user-name
-        = current_user.name
-      %li.icon
-        =link_to edit_user_path(current_user), class: "icon-rigth" do
-          %i.fa.fa-cog
-      %li.icon2
-        %a.icon-left(href="https://www.google.co.jp/")
-          %i.fa.fa-edit
-  .chat-side__groups
-    .chat-side__groups-list
-      .caht-side__group
-        = render partial: 'chat-side__group'
-
+  = render partial: 'chat-side__group'
 
 .chat-main
   .chat-main__header

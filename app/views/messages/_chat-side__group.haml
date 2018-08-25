@@ -1,6 +1,22 @@
-.caht-side__group
-  %a.chat-side__group-link(href="https://www.google.co.jp/")
-    .chat-side__group-name
-      グループ名
-    .chat-side__group-message
-      a
+.chat-side
+  .chat-side__user
+    %ul.chat-side__user-content
+      %li.chat-side__user-name
+        = current_user.name
+      %li.icon
+        =link_to edit_user_path(current_user), class: "icon-rigth" do
+          %i.fa.fa-cog
+      %li.icon2
+        = link_to new_group_path,class: 'icon-left' do
+          = fa_icon 'pencil-square-o'
+
+  .chat-side__groups
+    .chat-side__groups-list
+      .caht-side__group
+        .chat-side__group-link
+          - current_user.groups.each do |group|
+            = link_to group_messages_path(group), class: "a" do
+              .chat-side__group-name
+                = group.name
+              .chat-side__group-message
+                メッセージはまだありません
