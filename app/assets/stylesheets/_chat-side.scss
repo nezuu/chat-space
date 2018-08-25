@@ -52,21 +52,27 @@
     .chat-side__groups-list{
       height: 100%;
       color: #fff;
-      .caht-side__group{
+      padding: 20px;
+      .chat-side__link{
         padding: 20px;
         color:#fff;
+        text-decoration: none;
         .chat-side__group-link{
           color: #fff;
           text-decoration: none;
-          .chat-side__group-name{
-            font-size: 15px;
-          }
-          .chat-side__group-message{
-              font-size: 11px;
-          }
-        }
+
       }
     }
+  }
+}
+
+.chat-side__group-name{
+    font-size: 15px;
+    color: #fff;
+  }
+  .chat-side__group-message{
+      font-size: 11px;
+      color: #fff
   }
 }
 
@@ -83,4 +89,12 @@
     color: #ffffff;
     margin: 0 40px 0 15px;
 }
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
 
