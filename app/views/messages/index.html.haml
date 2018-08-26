@@ -12,12 +12,24 @@
       MEMBER:
       %i
         将吾
+
   .chat-main__body
-    = render partial: 'chat-main__body--messages-list'
+    = render partial: 'message', collection: @messages
   .chat-main__footer
-    = form_tag '#' do
-      %input{placeholder: "  type a message", type: "text", class: "chat-main__footer-form"}
-        %label.upload-label{for: "upload-icon"}
-          %i.fa.fa-picture-o
-          %input{type: "file", id:"upload-icon" }
-          %input{type: "submit", value:"SENT", class:"sent"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'chat-main__footer-form', placeholder: 'type a message'
+      = f.label :image, class: 'form__mask__image' do
+        = fa_icon 'picture-o', class: 'icon3'
+        = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'sent'
+
+
+
+
+
+    / = form_tag '#' do
+    /   %input{placeholder: "  type a message", type: "text", class: "chat-main__footer-form"}
+    /     %label.upload-label{for: "upload-icon"}
+    /       %i.fa.fa-picture-o
+    /       %input{type: "file", id:"upload-icon" }
+    /       %input{type: "submit", value:"SENT", class:"sent"}
