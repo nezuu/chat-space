@@ -1,0 +1,26 @@
+.chat-main__body--messages-list
+  .chat-main__message
+    .chat-main__message-name
+      = message.user.name
+    .chat-main__message-time
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+    .chat-main__message-body
+      - if message.content.present?
+        %p.lower-message__content
+          = message.content
+      = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+
+
+
+
+
+
+
+
+
+
+
+    / .chat-main__message-body
+    /   a
+    /   %image.caht-main__message-body-image
