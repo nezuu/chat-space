@@ -10,6 +10,7 @@
 .chat-main__body{
   height: calc( 100vh - 15% - 90px );
   overflow-y: scroll;
+  overflow: auto;
   .chat-main__body--messages-list{
     padding-top: 26px;
     padding-left: 40px;
