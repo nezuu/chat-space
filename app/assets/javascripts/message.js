@@ -1,11 +1,7 @@
   $(function(){
     function buildHTML(message){
 
-      if(message.url !== null){
-        var imageUrl = `<img src= "${ message.url }" class="lower-message__image">`
-      } else{
-        var imageUrl = ""
-      }
+      imageUrl = message.image !== null ? `<img src= "${ message.image }" class="lower-message__image">` : ""
 
       var html = `<div class="chat-main__body--messages-list">
                     <div class="chat-main__message">
@@ -37,13 +33,11 @@
         contentType: false
       })
       .done(function(message){
-        console.log("成功");
         var html = buildHTML(message);
         $('.chat-main__body').append(html)
         $('.chat-main__footer-form').val('')
         $('.hidden').val('')
-        $('.chat-main__body').animate({scrollTop:
-        $('.chat-main__body')[0].scrollHeight}, 'fast')
+        $('.chat-main__body').animate({scrollTop:$('.chat-main__body')[0].scrollHeight}, 'fast')
       })
       .fail(function() {
         alert('error');
