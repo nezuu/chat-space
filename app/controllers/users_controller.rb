@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  class UsersController < ApplicationController
 
   def index
+    @users = User.where('name LIKE(?)', "%#{params[:input]}%").limit(10).where.not(id: current_user)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def edit
@@ -20,5 +24,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-end
 end
