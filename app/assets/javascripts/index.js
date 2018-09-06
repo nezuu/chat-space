@@ -11,7 +11,6 @@ $(function() {
   $("#user-search-field").on("keyup", function(e) {
     e.preventDefault();
     var input = $("#user-search-field").val();
-
     $.ajax({
       type: 'GET',
       url: '/users',
@@ -44,7 +43,7 @@ $(function() {
     return user
  }
 
-  $(document).on("click",".user-search-add", function(){
+  $("#user-search-result").on("click",".user-search-add", function(){
     var user_name = $(this).data('user-name');
     var user_id = $(this).data('user-id');
     user = buildProduct( user_name, user_id )
@@ -52,7 +51,7 @@ $(function() {
     $(".chat-group-form__field__middle").append(user);
   });
 
-  $(document).on("click",".user-search-remove", function(){
+  $(".chat-group-form__field__middle").on("click",".user-search-remove", function(){
     $(this).parent().remove();
   });
 });
