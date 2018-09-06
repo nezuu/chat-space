@@ -10,28 +10,24 @@ $(function() {
 
   $("#user-search-field").on("keyup", function(e) {
     e.preventDefault();
-    var input = $("#user-search-field").val();
+    var inputValue = $("#user-search-field").val();
     $.ajax({
       type: 'GET',
       url: '/users',
-      data: { input: input },
+      data: { input: inputValue },
       dataType: 'json'
-    })
-
-    .done(function(users) {
-      $("#user-search-result").empty();
-      if (users.length !== 0 && input.length !== 0) {
-        users.forEach(function(user){
-          appendProduct(user);
-        });
-      }
-    })
-
-    .fail(function() {
-      alert('ユーザー検索に失敗しました');
-    })
+    }).done(function(users) {
+        $("#user-search-result").empty();
+        if (users.length !== 0 && inputValue.length !== 0) {
+          users.forEach(function(user){
+            appendProduct(user);
+          });
+        }
+    }).fail(function() {
+        alert('ユーザー検索に失敗しました');
+      })
+    });
   });
-});
 
 $(function() {
   function buildProduct(name, id) {
