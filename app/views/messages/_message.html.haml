@@ -1,5 +1,5 @@
 .chat-main__body--messages-list
-  .chat-main__message
+  .chat-main__message{ "data-message-id": "#{message.id}"}
     .chat-main__message-name
       = message.user.name
     .chat-main__message-time
