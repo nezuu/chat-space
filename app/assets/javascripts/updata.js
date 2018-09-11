@@ -1,5 +1,5 @@
 $(function(){
-  $(document).on('turbolinks:load', function() {
+  $(document).on(function() {
     function buildHTML(message){
     var insertImage = (message.image) ? `<img src="${message.image}">` : "";
     var html =`<div class="chat-main__body--messages-list">
@@ -27,6 +27,7 @@ $(function(){
           dataType: 'json'
         })
         .done(function(messages) {
+          console.log("自動更新")
           var id = $('.chat-main__message').filter(":last").data('messageId');
           var insertHTML = '';
           messages.forEach(function(message){
@@ -40,6 +41,7 @@ $(function(){
           alert('error')
         });
       };
+      clearInterval(interval)
     }, 5000);
   });
 });
