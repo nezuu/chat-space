@@ -31,13 +31,12 @@
         dataType: 'json',
         processData: false,
         contentType: false
-      })
-      .done(function(message){
-        var html = buildHTML(message);
-        $('.chat-main__body').append(html)
-        $('.chat-main__footer-form').val('')
-        $('.hidden').val('')
-        $('.chat-main__body').animate({scrollTop:$('.chat-main__body')[0].scrollHeight}, 'fast')
+      }).done(function(message){
+          var html = buildHTML(message);
+          $('.chat-main__body').append(html)
+          $('.chat-main__footer-form').val('')
+          $('.hidden').val('')
+          $('.chat-main__body').animate({scrollTop:$('.chat-main__body')[0].scrollHeight}, 'fast')
       })
       .fail(function() {
         alert('error');

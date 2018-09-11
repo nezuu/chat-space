@@ -4,7 +4,8 @@
       %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
       %ul
         - group.errors.full_messages.each do |message|
-          %li= message
+          %li
+            = message
   .chat-group-form__field
     .chat-group-form__field--left
       = f.label :name, class: 'chat-group-form__label'
@@ -16,7 +17,7 @@
       = label "user-search-field" , 'チャットメンバーを追加', class: "chat-group-form__label"
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        = f.text_field :user_ids, id: "user-search-field", class: "chat-group-form__input", placeholder: '追加したいユーザー名を入力してください', value: ''
+        = f.text_field :id,  id: "user-search-field", class: "chat-group-form__input", placeholder: '追加したいユーザー名を入力してください', value: ''
       #user-search-result
 
   .chat-group-form__field.clearfix
@@ -24,6 +25,10 @@
       %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
     .chat-group-form__field--right
       .chat-group-form__field__middle
+        - group.users.each do |user|
+          #chat-group-user-8.chat-group-user.clearfix.js-chat-member
+            = current_user.name
+            = f.hidden_field :user_ids, name: "group[user_ids][]", value: current_user.id
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left

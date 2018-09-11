@@ -5,12 +5,12 @@
   .chat-main__header
     .chat-main__header--group
       .chat-main__header--group-name
-        グループ名2
+        = @group.name
       =link_to "Edit", edit_group_path(@group), class: "chat-edit"
     .caht-main__header-members
       MEMBER:
-      %i
-        将吾
+      - @group.users.each do |user|
+        %span= user.name
 
   .chat-main__body
     = render partial: 'message', collection: @messages
