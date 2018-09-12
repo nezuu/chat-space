@@ -29,6 +29,7 @@
           #chat-group-user-8.chat-group-user.clearfix.js-chat-member
             = user.name
             = f.hidden_field :user_ids, name: "group[user_ids][]", value: user.id
+            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
