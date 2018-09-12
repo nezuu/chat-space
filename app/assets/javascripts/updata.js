@@ -1,14 +1,14 @@
 $(function(){
-  $(document).on(function() {
+  $(window).on('load', function() {
     function buildHTML(message){
     var insertImage = (message.image) ? `<img src="${message.image}">` : "";
     var html =`<div class="chat-main__body--messages-list">
-                    <div class="chat-main__message"  "data-message-id": ${ message.id }>
+                    <div class="chat-main__message" data-message-id= ${ message.id }>
                       <div class="chat-main__message-name">
                         ${ message.name }
                       </div>
                       <div class="chat-main__message-time">
-                        ${message.created_at}
+                        ${message.date}
                       </div>
                       <div class="chat-main__message-body">
                         ${ message.content }
@@ -19,21 +19,24 @@ $(function(){
       return html
     }
 
-    var interval = setInterval(function() {
+    setInterval(function() {
       if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+        console.log(location.href);
         $.ajax({
           url: location.href,
-          type: 'GET',
-          dataType: 'json'
+          dataType: 'json',
+          type: 'GET'
         })
         .done(function(messages) {
-          console.log("自動更新")
-          var id = $('.chat-main__message').filter(":last").data('messageId');
+          var id = $('.chat-main__message').filter(":last").data('message-id');
+          console.log($('.chat-main__message').filter(":last").data('message-id'))
           var insertHTML = '';
           messages.forEach(function(message){
             if (message.id > id ) {
+              console.log(message.id)
               insertHTML += buildHTML(message);
               $('.chat-main__body').append(insertHTML);
+              $('.chat-main__body').animate({scrollTop:$('.chat-main__body')[0].scrollHeight}, 'fast')
             }
           });
         })
@@ -41,7 +44,6 @@ $(function(){
           alert('error')
         });
       };
-      clearInterval(interval)
     }, 5000);
   });
 });

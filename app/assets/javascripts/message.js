@@ -1,23 +1,41 @@
   $(function(){
+    // function buildHTML(message){
+
+    //   imageUrl = message.image !== null ? `<img src= "${ message.image }" class="lower-message__image">` : ""
+
+    //   var html = `<div class="chat-main__body--messages-list">
+    //                 <div class="chat-main__message" "data-message-id": ${ message.id }>
+    //                   <div class="chat-main__message-name">
+    //                     ${ message.name }
+    //                   </div>
+    //                   <div class="chat-main__message-time">
+    //                     ${message.created_at}
+    //                   </div>
+    //                   <div class="chat-main__message-body">
+    //                     ${ message.content }
+    //                     ${ imageUrl }
+    //                   </div>
+    //                 </div>
+    //               </div>`
+    //   return html;
+    // }
     function buildHTML(message){
-
-      imageUrl = message.image !== null ? `<img src= "${ message.image }" class="lower-message__image">` : ""
-
-      var html = `<div class="chat-main__body--messages-list">
-                    <div class="chat-main__message">
+    var insertImage = (message.image) ? `<img src="${message.image}">` : "";
+    var html =`<div class="chat-main__body--messages-list">
+                    <div class="chat-main__message" data-message-id= ${ message.id }>
                       <div class="chat-main__message-name">
                         ${ message.name }
                       </div>
                       <div class="chat-main__message-time">
-                        ${message.created_at}
+                        ${message.date}
                       </div>
                       <div class="chat-main__message-body">
                         ${ message.content }
-                        ${ imageUrl }
+                        ${ insertImage }
                       </div>
                     </div>
-                  </div>`
-      return html;
+                  </div>`;
+      return html
     }
 
     $('#new_message').on('submit', function(e){
